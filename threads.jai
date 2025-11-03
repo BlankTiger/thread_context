@@ -1,7 +1,7 @@
 // Caller owns the returned array.
 init_threads :: (num_threads: int, proc: Thread_Proc, data: *void = null) -> []Thread {
     threads: [..]Thread;
-    array_resize(*threads, num_threads);
+    array_reserve(*threads, num_threads);
     shared_thread_state := init_shared_thread_state(num_threads);
 
     for * threads {
