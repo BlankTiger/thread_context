@@ -55,7 +55,7 @@ thread_pool_run_and_wait :: (pool: *Thread_Pool, user_data: *void) {
     inline thread_pool_wait(pool);
 }
 
-thread_pool_wait_and_run :: (pool: *Thread_Pool) {
+thread_pool_wait_and_run :: (pool: *Thread_Pool, user_data: *void) {
     inline thread_pool_wait(pool);
     inline thread_pool_run(pool, user_data);
 }

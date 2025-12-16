@@ -45,10 +45,12 @@ join_threads :: (threads: []Thread) {
 init_thread_group :: (num_threads: int, group_proc: Thread_Group_Proc) -> Thread_Group {
     group: Thread_Group;
 
-    init(*group, num_threads, group_proc);
+    init(*group, xx num_threads, group_proc);
+    shared_thread_state := init_shared_thread_state(num_threads);
 
     for * group.worker_info {
-        it.thread.starting_context.thread_state        = thread_state;
+        state := init_thread_state(it_index, num_threads, tprint("Worker %", it_index));
+        it.thread.starting_context.thread_state        = state;
         it.thread.starting_context.shared_thread_state = shared_thread_state;
     }
 
